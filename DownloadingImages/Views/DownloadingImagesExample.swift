@@ -5,11 +5,30 @@
 //  Created by Zachary on 6/11/22.
 //
 
+// codable
+// background threads
+// weak self
+// combine
+// publishers and subscribers
+// filemanager
+// NSCache
+
 import SwiftUI
 
 struct DownloadingImagesExample: View {
+    
+    @StateObject var vm = DownloadingImagesViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                ForEach(vm.dataArray) { model in
+                    DownloadingImagesRow(model: model)
+                }
+            }
+            .listStyle(.grouped)
+            .navigationTitle("Downloading Images")
+        }
     }
 }
 
